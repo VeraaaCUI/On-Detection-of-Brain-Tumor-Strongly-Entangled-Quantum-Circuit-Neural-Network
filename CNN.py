@@ -88,7 +88,6 @@ class BrainDataset(Dataset):
 
         return image, label
     
-# Define transforms for testing (typically without noise)
 transform = transforms.Compose([
     transforms.Resize(130),
     transforms.CenterCrop(128),
