@@ -61,19 +61,17 @@ class BrainDataset(Dataset):
         self.images = []
         self.labels = []
 
-        # Load images from 'yes' folder
-        fire_dir = os.path.join(root_dir, 'yes')
-        for img_name in os.listdir(fire_dir):
-            if img_name.endswith('.png') or img_name.endswith('.jpg'):
-                self.images.append(os.path.join(fire_dir, img_name))
-                self.labels.append(1)  # Label for yes
+        tumor_dir = os.path.join(root_dir, 'yes')
+        for img_name in os.listdir(tumor_dir):
+            if img_name.endswith('.png') or img_name.endswith('.jpg'):  # Assuming image formats are PNG or JPG
+                self.images.append(os.path.join(tumor_dir, img_name))
+                self.labels.append(1)  
 
-        # Load images from 'no' folder
-        no_fire_dir = os.path.join(root_dir, 'no')
-        for img_name in os.listdir(no_fire_dir):
+        no_tumor_dir = os.path.join(root_dir, 'no')
+        for img_name in os.listdir(no_tumor_dir):
             if img_name.endswith('.png') or img_name.endswith('.jpg'):
-                self.images.append(os.path.join(no_fire_dir, img_name))
-                self.labels.append(0)  # Label for no
+                self.images.append(os.path.join(no_tumor_dir, img_name))
+                self.labels.append(0)  
 
     def __len__(self):
         return len(self.images)
